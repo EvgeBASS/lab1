@@ -3,8 +3,6 @@ import json
 import requests
 
 from app.asm2204.st21 import JsonStrategy, CustomEncoder
-from app.asm2204.st21.database.db_config import DBConfig
-from app.asm2204.st21.feature.containers.Notebook import Notebook
 from app.asm2204.st21.feature.models.Creature import Creature
 from app.asm2204.st21.feature.models.Note import Note
 from app.asm2204.st21.feature.strategy.simple.ConsoleStrategy import ConsoleStrategy
@@ -76,6 +74,8 @@ class ConsoleApp:
 
         self.print_notes(notes)
 
+        return notes
+
     def add_note(self):
         options = list([str(item) for item in self.note_types])
 
@@ -90,9 +90,7 @@ class ConsoleApp:
             print(res['message'])
 
     def edit_note(self):
-        notes = self.notebook.get_notes()
-
-        self.print_notes(notes)
+        notes = self.show_notes()
 
         index = self.strategy.read_param('int', 'Index')
 
@@ -106,9 +104,7 @@ class ConsoleApp:
             print(res['message'])
 
     def delete_note(self):
-        notes = self.notebook.get_notes()
-
-        self.print_notes(notes)
+        notes = self.show_notes()
 
         index = self.strategy.read_param('int', 'Index')
 

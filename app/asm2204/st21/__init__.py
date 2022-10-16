@@ -77,9 +77,6 @@ def main_api():
         id = request.args.get('id')
         type = request.args.get('type')
 
-        print('ID: ', id)
-        print('Type: ', type)
-
         result = g.notebook.delete_note(id, type)
 
         if result is None:
