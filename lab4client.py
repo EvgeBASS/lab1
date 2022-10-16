@@ -1,6 +1,7 @@
 ﻿import clients.asm2204.st00.main
 import clients.asm2205.st00.main
 import clients.aam2207.st00.main
+import clients.asm2204.st21.main
 #	добавить импорт своего модуля по шаблону
 #	import clients.asm<код группы>.st<номер по журналу>.main
 
@@ -8,6 +9,7 @@ MENU = [
     ["[2204-00] Образец 2204", clients.asm2204.st00.main.main],
     ["[2205-00] Образец 2205", clients.asm2205.st00.main.main],
     ["[2207-00] Образец 2207", clients.aam2207.st00.main.main],
+    ["[2204-00] Мельников 2204", clients.asm2204.st21.main.main],
 ]
 
 
