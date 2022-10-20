@@ -41,7 +41,7 @@ def index():
 def table_person():
     context = {"title": "Табличное представление",
                "person_list": bd_to_group(g.bd.db_request("get_all")).person_list, }
-    return render_template('table.html', context=context)
+    return render_template('/asm2204/st08/templates/table.html', context=context)
 
 
 @bp.route('/card_person', methods=['POST', 'GET'])
@@ -63,7 +63,7 @@ def card_person():
 
     context = {"title": "Карточки",
                "person_list": f.output()}
-    return render_template('card.html', context=context)
+    return render_template('/asm2204/st08/templates/card.html', context=context)
 
 
 @bp.route('/add_person', methods=['POST', 'GET'])
@@ -87,7 +87,7 @@ def add_person():
             g.bd.db_request("add_items", new_data)
             # g.add_person(Reader(new_data["Name"], new_data["Surname"], new_data["Age"]))
 
-    return render_template('add_person.html', context=context)
+    return render_template('/asm2204/st08/templates/add_person.html', context=context)
 
 
 @bp.route('/edite_person/<type>/<pers_number>/', methods=['POST', 'GET'])  # это главная страница
@@ -123,7 +123,7 @@ def edite_person(pers_number=None, type=None):
             #                                   request.form.get("Age")))
         return redirect(url_for(".card_person"))
 
-    return render_template('edite_person.html', context=context)
+    return render_template('/asm2204/st08/templates/edite_person.html', context=context)
 
 
 @bp.route('/del_person/<type>/<pers_number>/', methods=['POST', 'GET'])  # это главная страница
@@ -157,10 +157,10 @@ def save_file():
 @bp.route('/upload_file')  # это главная страница
 def upload_file():
     f = File()
-    # g.group = Group("Test_group")
-    g.group = f.input()
+    # group = Group("Test_group")
+    group = f.input()
 
-    for person in g.person_list:
+    for person in group.person_list:
         new_data = person.get_dict()
 
         if new_data["type"] == "Писатель":
