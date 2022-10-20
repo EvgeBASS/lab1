@@ -28,6 +28,7 @@ for i, (title, bp) in enumerate(sorted(bps), start=1):
 def index():
 	return render_template("index.tpl", bps=sorted(bps))
 
+
 @app.route("/api/", methods=['GET'])
 def api():
 	sts = []

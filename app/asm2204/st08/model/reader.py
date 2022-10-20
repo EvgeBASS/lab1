@@ -2,13 +2,13 @@ from .user import User
 
 
 def get_age_limit(age):
-    if int(age) > 18:
+    if int(age) >= 18:
         return "18+"
-    elif int(age) > 16:
+    elif int(age) >= 16:
         return "16+"
-    elif int(age) > 12:
+    elif int(age) >= 12:
         return "12+"
-    elif int(age) > 6:
+    elif int(age) >= 6:
         return "6+"
     else:
         return "0+"

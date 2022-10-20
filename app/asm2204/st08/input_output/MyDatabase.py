@@ -13,6 +13,9 @@ class SQLite:
         if db_name is not None:
             self.db_name = db_name
 
+    def __str__(self):
+        return f"<Class SQLite> db_name: {self.db_name}"
+
     def set_url(self, db_url):
         self.db_url = db_url
 
@@ -109,7 +112,7 @@ def get_one_item(bd_connection, cursor, data_dict):
         cursor.execute(writer_get, (data_dict["id"]))
         return cursor.fetchall()
     elif data_dict["type"] == "Читатель":
-        cursor.execute(writer_get, (data_dict["id"]))
+        cursor.execute(reader_get, (data_dict["id"]))
         return cursor.fetchall()
     else:
         return None
