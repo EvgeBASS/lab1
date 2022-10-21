@@ -9,6 +9,7 @@ from app.asm2204.st00 import bp as bp0400
 from app.asm2204.st08 import bp as bp0408
 from app.asm2205.st00 import bp as bp0500
 from app.aam2207.st00 import bp as bp0700
+from app.asm2205.st16 import bp as bp0516
 # добавить пункт меню для вызова своего модуля по шаблону:
 
 
@@ -17,6 +18,7 @@ bps = [
 	["[2204-08] Довиденков 2204", bp0408],
 	["[2205-00] Образец 2205", bp0500],
 	["[2207-00] Образец 2207", bp0700],
+	["[2205-16] Матвеев 2205", bp0516],
 ]
 
 
