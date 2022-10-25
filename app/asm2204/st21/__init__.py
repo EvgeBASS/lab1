@@ -36,7 +36,7 @@ def main_api():
         return json.dumps([note.__dict__ for note in g.notebook.get_notes()], cls=CustomEncoder)
 
     if request.method == 'POST':
-        body = json.loads(request.json)
+        body = request.json
 
         note = note_types[body['type']](JsonStrategy(body))
         note.set_note()
@@ -55,7 +55,7 @@ def main_api():
                 }), 200, {'ContentType': 'application/json'}
 
     if request.method == 'PUT':
-        body = json.loads(request.json)
+        body = request.json
 
         note = note_types[body['type']](JsonStrategy(body))
         note.set_note()

@@ -4,7 +4,7 @@ import sqlite3
 
 
 class DBConfig():
-    db_url = os.getcwd() + './data/asm2204/st21/notebook.db'
+    db_url = os.getcwd() + '/data/asm2204/st21/notebook.db'
 
     notebooks_table_creation = 'CREATE TABLE IF NOT EXISTS notebooks (' \
                                'id INTEGER NOT NULL, ' \
@@ -57,6 +57,7 @@ class DBConfig():
             with open(DBConfig.db_url, 'r'):
                 print("База данных найдена")
         except Exception:
+            print("path = ", DBConfig.db_url)
             print("База данных не найдена")
 
             try:
