@@ -3,8 +3,8 @@ import json
 import sqlite3
 
 
-class DBConfig():
-    db_url = os.getcwd() + '/data/asm2204/st21/notebook.db'
+class DBConfig:
+    db_url = os.getcwd() + '\\data\\asm2204\\st21\\notebook.db'
 
     notebooks_table_creation = 'CREATE TABLE IF NOT EXISTS notebooks (' \
                                'id INTEGER NOT NULL, ' \

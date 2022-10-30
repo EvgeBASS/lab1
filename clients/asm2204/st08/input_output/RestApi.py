@@ -1,11 +1,7 @@
-import json
-from abc import abstractmethod
-
 import requests
 
 
-
-class Console:
+class RestConsole:
     url = 'http://localhost:5000/'
     # url = 'http://localhost:5000/st2/api/'
     st = False
@@ -108,10 +104,6 @@ class Console:
         r = requests.post(self.url + "edite_person",
                           person_info)
 
-
-
-
-
     def show(self):
         """Вывод объектов"""
         print("[Вывод объектов]")
@@ -129,39 +121,66 @@ class Console:
 
     def get_url(self):
         """Поиск st"""
-        if self.st is False:
-            print("Стартовые настройки. Ожидайте.")
-            for i in range(90):
-                response = requests.get(self.url + f'st{i}/Dovidenkov')
-                if response.status_code == 200:
-                    # print("Нашли подходящий ресурс")
-                    if response.text == "Yes":
-                        # print(f"Пройдена проверка подлиности| наш {self.url}st{i}")
-                        print("Завершение стартовых настроек.")
-                        return self.url + 'st' + str(i) + '/api/'
-                else:
-                    # print(response.raise_for_status())
-                    pass
-        else:
-            print(f'Искомый адресс уже найден {self.url}')
-            return self.url
+        url = 'http://localhost:5000/'
+        response = requests.get(url + 'api/')
+        # print(response.json())
+        for item in response.json()['sts']:
+            if item[1] == '[2204-08] Довиденков 2204':
+                print(f"наш st{item[0]}")
+                return self.url + 'st' + str(item[0]) + '/api/'
+        print("Не нашли наш st")
 
-    menu = [
-        ["Добавить объект", add],
-        ["Редактировать", edit],
-        ["Удалить объект", delete],
-        ["Вывести все объекты", show],
-        ["Выход"],
-    ]
+    # старый вариант поиска st
+    # def get_url(self):
+    #     """Поиск st"""
+    #     if self.st is False:
+    #         print("Стартовые настройки. Ожидайте.")
+    #         for i in range(90):
+    #             response = requests.get(self.url + f'st{i}/Dovidenkov')
+    #             if response.status_code == 200:
+    #                 # print("Нашли подходящий ресурс")
+    #                 if response.text == "Yes":
+    #                     # print(f"Пройдена проверка подлиности| наш {self.url}st{i}")
+    #                     print("Завершение стартовых настроек.")
+    #                     return self.url + 'st' + str(i) + '/api/'
+    #             else:
+    #                 # print(response.raise_for_status())
+    #                 pass
+    #     else:
+    #         print(f'Искомый адресс уже найден {self.url}')
+    #         return self.url
 
-    def working_menu(self):
-        """ Текст для меню """
-        while True:
-            for i, value in enumerate(self.menu):
-                print(f"[{i}] {value[0]}")
+    # идут функции под стратегию
+    def input(self, *args):
+        self.add()
 
-            choose = int(input(">>"))
-            if self.menu[choose][0] == "Выход":
-                break
-            else:
-                self.menu[choose][1](self)
+    def output(self, *args):
+        self.show()
+
+    def delete(self, *args):
+        self.delete()
+
+    def edite(self, *args):
+        self.edit()
+
+    # функции под стратегию кончились
+
+    # menu = [
+    #     ["Добавить объект", add],
+    #     ["Редактировать", edit],
+    #     ["Удалить объект", delete],
+    #     ["Вывести все объекты", show],
+    #     ["Выход"],
+    # ]
+    #
+    # def working_menu(self):
+    #     """ Текст для меню """
+    #     while True:
+    #         for i, value in enumerate(self.menu):
+    #             print(f"[{i}] {value[0]}")
+    #
+    #         choose = int(input(">>"))
+    #         if self.menu[choose][0] == "Выход":
+    #             break
+    #         else:
+    #             self.menu[choose][1](self)
