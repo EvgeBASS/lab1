@@ -14,7 +14,7 @@ MENU = [
     ["[2205-00] Образец 2205", clients.asm2205.st00.main.main],
     ["[2207-00] Образец 2207", clients.aam2207.st00.main.main],
     ["[2204-21] Мельников 2204", clients.asm2204.st21.main.main],
-    ["[2205-00] Матвеев 2205", clients.asm2205.st16.main.main],
+    ["[2205-16] Матвеев 2205", clients.asm2205.st16.main.main],
     ["[2205-06] Емельянова 2205", clients.asm2205.st06.main.main],
 
 ]
