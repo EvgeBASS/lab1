@@ -65,6 +65,8 @@ class PickleStorage:
             self.maxid = 0
 
     def Load(self):
+        if not os.path.exists(self.path):
+            os.mkdir(self.path)
         with open(self.path + 'airlines.db', 'rb') as f:
             (self.maxid, self.items) = pickle.load(f)
 
