@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: margin-right 4s;
+    width: 40%;
+    border-radius: 5px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+    transition: 0.3s;
+    border-radius: 5px 5px 5px 5px;
+    margin : 5px 5px 5px 5px;
+    width: 40%;
+}
+
+header {
+ display: block; /* Для старых браузеров */
+ height: 405px; /* Высота шапки */
+}
+
+.container {
+    display: inline;
+    padding: 2px 16px;
+}
+</style>
+</head>
+<body>
+<img src="static/images/KFC.png" width=80%>
+<form action="#" method = "post">
+<div>
+    <input type="submit" name="addChicken" value="Добавить курицу"/>
+    <input type="submit" name="addSuperChicken" value="Добавить курицу необыкновенную"/>
+    <input type="submit" name="addBrolBoy" value="Добавить Бройлера !!!"/>
+    <input type="submit" name="save" value="Сохранить"/>
+    <input type="submit" name="load" value="Загрузить"/>
+</div>
+{% for i in range(len)%}
+    <div class="card">
+        <img src="static/images/{{items[i].__class__.__name__}}.jpg" width="300" height="230">
+        <img src="static/images/sanders.jpg" align = right>
+        <div class="container" >
+            <div><input type=text placeholder='Введите Имя' name={{i}}name><b> {{items[i].name}}</b></div>
+            <div><input type=text placeholder='Введите Фамилию' name={{i}}surname><b> {{items[i].surname}}</b></div>
+            <div><input type=number placeholder='Введите Размер' name={{i}}size><b> {{items[i].size}}</b></div>
+            {% if items[i].__class__.__name__ == "SuperChicken" %}
+            <div><input type=text placeholder='Введите Цвет' name={{i}}color><b> {{items[i].color}}</b></div>
+            {% endif %}
+            {% if items[i].__class__.__name__ == "BrolBoy" %}
+            <div><input type=text placeholder='Введите боевой клич' name={{i}}battle_cry><b> {{items[i].battle_cry}}</b></div>
+            {% endif %}
+            <input type="submit" name="{{i}}delete" value="Удалить"/>
+        </div>
+    </div>
+{% endfor %}
+
+
+</form>
+
+</body>
+</html>
