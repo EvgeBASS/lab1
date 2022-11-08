@@ -37,13 +37,13 @@ def add():
 
 # API
 @bp.route("/api/", methods=['GET'])
-def HTTPGetAirlines():
+def HTTPGet():
     chicken_world.selfInit()
     return jsonify(chicken_world.chickens)
 
 
 @bp.route("/api/", methods=['POST'])
-def HTTPPostAirlines():
+def HTTPPost():
     chicken_world.selfInit()
     chicken_world.send_for_sale()
     data = request.json

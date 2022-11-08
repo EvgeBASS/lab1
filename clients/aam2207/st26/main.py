@@ -29,7 +29,6 @@ class ClientHTTP:
         ndata = []
         for it in self.API.chickens:
             ndata.append(it.__dict__)
-        print(ndata)
         requests.post(f"http://127.0.0.1:5000/st{self.st}/api/", data=json.dumps(ndata), headers={"Content-type": 'application/json'})
 
 def main():

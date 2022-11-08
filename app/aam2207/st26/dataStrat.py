@@ -68,7 +68,6 @@ class SQLLiteBehaviour:
         cur.execute("SELECT * FROM [Chiken]")
         for r in cur:
             class_type = r['Class_type']
-
             item = None
             if class_type == 'Chicken':
                 item = Chicken()
@@ -76,6 +75,7 @@ class SQLLiteBehaviour:
                 item = BrolBoy()
             elif class_type == 'SuperChicken':
                 item = SuperChicken()
+            item.DBLoad(r)
             obj.append(item)
         return obj
 
