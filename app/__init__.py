@@ -16,7 +16,7 @@ from app.asm2204.st25 import bp as bp0425
 from app.asm2205.st24 import bp as bp0524
 from app.asm2205.st25 import bp as bp0525
 from app.aam2207.st26 import bp as bp0726
-
+from app.asm2205.st12 import bp as bp0512
 # добавить пункт меню для вызова своего модуля по шаблону:
 
 bps = [
@@ -31,7 +31,9 @@ bps = [
     ["[2205-24] Халявина 2205", bp0524],
     ["[2205-25] Харисова 2205", bp0525],
     ["[2207-26] Юхацков 2207", bp0726],
+	["[2205-12] Красин 2205", bp0512],
 ]
+
 
 for i, (title, bp) in enumerate(sorted(bps), start=1):
     app.register_blueprint(bp, url_prefix=f"/st{i}")
@@ -44,7 +46,7 @@ def index():
 
 @app.route("/api/", methods=['GET'])
 def api():
-    sts = []
-    for i, (title, bp) in enumerate(sorted(bps), start=1):
-        sts.append([i, title])
-    return jsonify({'sts': sts})
+	sts = []
+	for i, (title, bp) in enumerate(sorted(bps), start=1):
+		sts.append([i, title])
+	return jsonify({'sts': sts})
